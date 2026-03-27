@@ -62,14 +62,9 @@
       transition: opacity 0.6s ease;
     }
 
-    #boot.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
+    #boot.fade-out { opacity: 0; pointer-events: none; }
 
-    .boot-inner {
-      width: min(680px, 90vw);
-    }
+    .boot-inner { width: min(680px, 90vw); }
 
     .boot-line {
       font-size: clamp(13px, 2vw, 15px);
@@ -81,11 +76,8 @@
     }
 
     .boot-line.visible { opacity: 1; }
-
-    .boot-line .prompt { color: #00ff88; }
-    .boot-line .cmd    { color: #ffffff; }
-    .boot-line .dim    { color: #444; }
-    .boot-line .url    { color: #00ffc8; }
+    .boot-line .cmd { color: #ffffff; }
+    .boot-line .url { color: #00ffc8; }
 
     .boot-cursor {
       display: inline-block;
@@ -147,26 +139,6 @@
 
     .hero-left { max-width: 580px; }
 
-    .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--border-hi);
-    }
-
     .hero-name {
       font-family: var(--sans);
       font-size: clamp(3.5rem, 7vw, 6rem);
@@ -215,81 +187,47 @@
     .btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--border-hi); }
     .btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
 
-    /* ── VIM TERMINAL CARD ── */
+    /* ── BASH TERMINAL CARD ── */
     .hero-right { display: flex; justify-content: flex-end; align-items: center; }
 
     .terminal {
       width: 100%;
-      max-width: 460px;
-      background: #0d0d0d;
+      max-width: 440px;
+      background: var(--bg-2);
       border: 1px solid var(--border);
       font-family: var(--mono);
-      font-size: 12px;
     }
 
-    /* vim top bar */
-    .vim-topbar {
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .terminal-title { margin-left: auto; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; }
+
+    .terminal-body { padding: 1.5rem; font-size: 12px; line-height: 2; color: var(--text-muted); }
+
+    .t-prompt { color: var(--accent); }
+    .t-cmd    { color: var(--text); }
+    .t-key    { color: var(--accent-2); }
+    .t-val    { color: var(--text); }
+    .t-comment{ color: var(--text-dim); }
+
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
       background: var(--accent);
-      color: #000;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 2px 10px;
-      display: flex;
-      justify-content: space-between;
-      letter-spacing: 0.05em;
-    }
-
-    /* vim body */
-    .vim-body {
-      padding: 0.75rem 0;
-      line-height: 1.85;
-      color: var(--text-muted);
-      min-height: 200px;
-    }
-
-    .vim-line {
-      display: flex;
-      padding: 0 0.75rem;
-    }
-
-    .vim-lnum {
-      color: #3a3a36;
-      min-width: 28px;
-      text-align: right;
-      margin-right: 12px;
-      user-select: none;
-      font-size: 11px;
-    }
-
-    .vim-tilde {
-      color: #3a3a36;
-      padding: 0 0.75rem;
-    }
-
-    .v-key    { color: #7ec8e3; }
-    .v-str    { color: #a8d8a8; }
-    .v-fn     { color: var(--accent); }
-    .v-sym    { color: var(--text-dim); }
-    .v-cmt    { color: #4a4a46; font-style: italic; }
-    .v-num    { color: #f4a261; }
-
-    /* vim statusline */
-    .vim-status {
-      background: var(--accent);
-      color: #000;
-      font-size: 11px;
-      padding: 2px 10px;
-      display: flex;
-      justify-content: space-between;
-      letter-spacing: 0.04em;
-    }
-
-    .vim-cmdline {
-      padding: 2px 10px;
-      font-size: 11px;
-      color: var(--text-dim);
-      background: #0d0d0d;
-      border-top: 1px solid var(--border);
+      animation: blink 1.1s step-end infinite;
+      vertical-align: middle;
     }
 
     /* ── GRID BG ── */
@@ -328,7 +266,7 @@
       white-space: nowrap;
     }
 
-    .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); }
     .status-dot.green { background: #00ff88; box-shadow: 0 0 6px #00ff88; }
     .status-item .label { color: var(--text-muted); }
 
@@ -354,7 +292,6 @@
 
     .footer-links a:hover { color: var(--accent); }
 
-    /* ── ANIMATIONS ── */
     @keyframes blink { 50% { opacity: 0; } }
 
     @keyframes fadeUp {
@@ -362,13 +299,11 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-    .hero-name    { animation: fadeUp 0.6s 0.1s ease both; }
-    .hero-title   { animation: fadeUp 0.6s 0.2s ease both; }
-    .hero-cta     { animation: fadeUp 0.6s 0.3s ease both; }
-    .terminal     { animation: fadeUp 0.7s 0.2s ease both; }
+    .hero-name  { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-title { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-cta   { animation: fadeUp 0.6s 0.3s ease both; }
+    .terminal   { animation: fadeUp 0.7s 0.2s ease both; }
 
-    /* ── MOBILE ── */
     @media (max-width: 800px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
@@ -386,16 +321,15 @@
   <!-- BOOT SCREEN -->
   <div id="boot">
     <div class="boot-inner">
-      <div class="boot-line" id="bl-0"><span class="prompt">nirvik@archlinux:~$ </span><span class="cmd" id="typed-cmd"></span><span class="boot-cursor" id="boot-cur"></span></div>
+      <div class="boot-line visible" id="bl-0"><span class="prompt">nirvik@wsl:~$ </span><span id="typed-cmd"></span><span class="boot-cursor" id="boot-cur"></span></div>
       <div class="boot-line" id="bl-1"></div>
       <div class="boot-line" id="bl-2"></div>
-      <div class="boot-line" id="bl-3"></div>
     </div>
   </div>
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">nirvik.nvim</a>
+    <a href="#" class="nav-logo">nirvik@wsl:~$</a>
     <ul class="nav-links">
       <li><a href="#">about</a></li>
       <li><a href="#">projects</a></li>
@@ -406,7 +340,6 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Carnegie Mellon University</p>
       <h1 class="hero-name">
         <span class="scramble" data-text="Nirvik">Nirvik</span><br>
         <span class="scramble scramble-outlined" data-text="Pande">Pande</span>
@@ -422,31 +355,29 @@
     </div>
 
     <div class="hero-right">
-      <!-- VIM-style editor card -->
       <div class="terminal">
-        <div class="vim-topbar">
-          <span>nirvik.lua</span>
-          <span>NORMAL</span>
+        <div class="terminal-bar">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+          <span class="terminal-title">nirvik@wsl: ~</span>
         </div>
-        <div class="vim-body">
-          <div class="vim-line"><span class="vim-lnum">1</span><span class="v-cmt">-- portfolio config</span></div>
-          <div class="vim-line"><span class="vim-lnum">2</span></div>
-          <div class="vim-line"><span class="vim-lnum">3</span><span class="v-key">local </span><span class="v-fn">M</span><span class="v-sym"> = {}</span></div>
-          <div class="vim-line"><span class="vim-lnum">4</span></div>
-          <div class="vim-line"><span class="vim-lnum">5</span><span class="v-fn">M</span><span class="v-sym">.</span><span class="v-key">name</span><span class="v-sym">    = </span><span class="v-str">"Nirvik Pande"</span></div>
-          <div class="vim-line"><span class="vim-lnum">6</span><span class="v-fn">M</span><span class="v-sym">.</span><span class="v-key">school</span><span class="v-sym">  = </span><span class="v-str">"CMU SCS"</span></div>
-          <div class="vim-line"><span class="vim-lnum">7</span><span class="v-fn">M</span><span class="v-sym">.</span><span class="v-key">status</span><span class="v-sym">  = </span><span class="v-str">"student"</span></div>
-          <div class="vim-line"><span class="vim-lnum">8</span></div>
-          <div class="vim-line"><span class="vim-lnum">9</span><span class="v-key">return </span><span class="v-fn">M</span></div>
-          <div class="vim-tilde">~</div>
-          <div class="vim-tilde">~</div>
-          <div class="vim-tilde">~</div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">~$</span> <span class="t-cmd">whoami</span></div>
+          <div>nirvik pande</div>
+          <br>
+          <div><span class="t-prompt">~$</span> <span class="t-cmd">cat info.json</span></div>
+          <div>{</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"school"</span>: <span class="t-val">"CMU SCS"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"degree"</span>: <span class="t-val">"B.S. Computer Science"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"student"</span></div>
+          <div>}</div>
+          <br>
+          <div><span class="t-prompt">~$</span> <span class="t-cmd">ls projects/</span></div>
+          <div class="t-comment"># coming soon...</div>
+          <br>
+          <div><span class="t-prompt">~$</span> <span class="cursor"></span></div>
         </div>
-        <div class="vim-status">
-          <span>● nirvik.lua</span>
-          <span>9,1 &nbsp; All</span>
-        </div>
-        <div class="vim-cmdline">:source %</div>
       </div>
     </div>
   </section>
@@ -458,9 +389,11 @@
       <span class="label">location:</span> Pittsburgh, PA
     </div>
     <div class="status-item">
-      <span class="label">school:</span> Carnegie Mellon University
+      <div class="status-dot"></div>
+      <span class="label">school:</span> CMU
     </div>
     <div class="status-item">
+      <div class="status-dot"></div>
       <span class="label">major:</span> Computer Science
     </div>
   </div>
@@ -476,62 +409,44 @@
   </footer>
 
   <script>
-    /* ── BOOT ANIMATION ── */
-    const COMMAND   = 'npm run start';
-    const LINE1_TXT = 'Server starting...';
-    const LINE2_TXT = '';
-    const LINE3_TXT = 'Server listening on \u200Bhttp://localhost:5173';
-
-    const typedEl  = document.getElementById('typed-cmd');
-    const bootCur  = document.getElementById('boot-cur');
-    const bl0      = document.getElementById('bl-0');
-    const bl1      = document.getElementById('bl-1');
-    const bl2      = document.getElementById('bl-2');
-    const bl3      = document.getElementById('bl-3');
-    const bootEl   = document.getElementById('boot');
+    /* ── BOOT ── */
+    const typedEl = document.getElementById('typed-cmd');
+    const bootCur = document.getElementById('boot-cur');
+    const bl1     = document.getElementById('bl-1');
+    const bl2     = document.getElementById('bl-2');
+    const bootEl  = document.getElementById('boot');
 
     function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    function typeText(el, text, speed = 68) {
-      return new Promise(async resolve => {
-        for (let i = 0; i <= text.length; i++) {
-          el.textContent = text.slice(0, i);
-          await wait(speed + Math.random() * 30);
-        }
-        resolve();
-      });
-    }
-
-    function setLine(el, html) {
-      el.innerHTML = html;
-      el.classList.add('visible');
+    async function typeText(el, text, speed = 68) {
+      for (let i = 0; i <= text.length; i++) {
+        el.textContent = text.slice(0, i);
+        await wait(speed + Math.random() * 30);
+      }
     }
 
     async function runBoot() {
-      bl0.classList.add('visible');
-      await wait(400);
-      await typeText(typedEl, COMMAND);
+      await wait(350);
+      await typeText(typedEl, 'npm run start');
       bootCur.style.display = 'none';
 
-      await wait(220);
-      setLine(bl1, LINE1_TXT);
+      await wait(200);
+      bl1.innerHTML = 'Server starting...';
+      bl1.classList.add('visible');
 
-      await wait(900);
-      setLine(bl2, LINE2_TXT);
-      setLine(bl3, `Server listening on <span class="url">http://localhost:5173</span>`);
+      await wait(850);
+      bl2.innerHTML = 'Server listening on <span class="url">http://localhost:5173</span>';
+      bl2.classList.add('visible');
 
-      await wait(1100);
+      await wait(1000);
       bootEl.classList.add('fade-out');
       await wait(650);
       bootEl.style.display = 'none';
 
-      // trigger scramble after boot finishes
-      document.querySelectorAll('.scramble').forEach((el, i) => {
-        setTimeout(() => scramble(el), 200 + i * 180);
-      });
+      startScrambleLoop();
     }
 
-    /* ── SCRAMBLE EFFECT ── */
+    /* ── SCRAMBLE ── */
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
 
     function scramble(el) {
@@ -540,24 +455,30 @@
       const totalFrames = 22;
       let frame = 0;
       const interval = setInterval(() => {
-        const resolvedCount = Math.floor((frame / totalFrames) * len);
-        let display = '';
+        const resolved = Math.floor((frame / totalFrames) * len);
+        let out = '';
         for (let i = 0; i < len; i++) {
-          display += i < resolvedCount
-            ? target[i]
-            : CHARS[Math.floor(Math.random() * CHARS.length)];
+          out += i < resolved ? target[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
         }
-        el.textContent = display;
+        el.textContent = out;
         frame++;
         if (frame > totalFrames) { clearInterval(interval); el.textContent = target; }
       }, 40);
     }
 
-    document.querySelector('.hero-name').addEventListener('mouseenter', () => {
+    function scrambleAll() {
       document.querySelectorAll('.scramble').forEach((el, i) => {
-        setTimeout(() => scramble(el), i * 120);
+        setTimeout(() => scramble(el), i * 180);
       });
-    });
+    }
+
+    function startScrambleLoop() {
+      scrambleAll();
+      setInterval(scrambleAll, 7000);
+    }
+
+    // hover also triggers it
+    document.querySelector('.hero-name').addEventListener('mouseenter', scrambleAll);
 
     runBoot();
   </script>
