@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Nirvik Pande</title>
+  <meta name="description" content="About Nirvik Pande — CS student at Carnegie Mellon School of Computer Science." />
+  <meta property="og:title" content="About — Nirvik Pande" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #111111;
+      --bg-2:     #191919;
+      --bg-3:     #222222;
+      --border:   #2e2e2e;
+      --border-hi:#555550;
+      --text:     #f0ede6;
+      --text-2:   #aaa89f;
+      --text-3:   #666660;
+      --accent:   #00e676;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'Syne', sans-serif;
+      --sp-1: 8px;  --sp-2: 16px; --sp-3: 24px; --sp-4: 32px;
+      --sp-5: 40px; --sp-6: 48px; --sp-8: 64px; --sp-10: 80px;
+      --text-xs: 11px; --text-sm: 13px; --text-base: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--sp-6);
+      background: rgba(17,17,17,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      height: var(--sp-8);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: var(--sp-5); list-style: none; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-2);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a::before { content: '// '; color: var(--text-3); transition: color 0.18s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a:hover::before, .nav-links a.active::before { color: var(--accent); }
+
+    /* ── PAGE ── */
+    main {
+      flex: 1;
+      padding: calc(var(--sp-8) + var(--sp-6)) var(--sp-6) var(--sp-8);
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-bottom: var(--sp-8);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .page-label {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-2);
+    }
+
+    .page-label::before {
+      content: '';
+      display: block;
+      width: var(--sp-4);
+      height: 1px;
+      background: var(--border-hi);
+    }
+
+    .page-title {
+      font-family: var(--sans);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    /* ── ABOUT GRID ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: var(--sp-8);
+      align-items: start;
+    }
+
+    /* ── BIO ── */
+    .bio-section { animation: fadeUp 0.5s 0.1s ease both; }
+
+    .bio-text {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: var(--sp-6);
+    }
+
+    .bio-text p + p { margin-top: var(--sp-3); }
+
+    /* ── QUICK FACTS ── */
+    .facts {
+      border-top: 1px solid var(--border);
+      padding-top: var(--sp-4);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3) var(--sp-6);
+    }
+
+    .fact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .fact-label {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .fact-value {
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--text-2);
+    }
+
+    .fact-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .fact-value a:hover { text-decoration: underline; }
+
+    /* ── PHOTO ── */
+    .photo-section {
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    /* green corner accent */
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: var(--sp-4);
+      height: var(--sp-4);
+      background: var(--accent);
+    }
+
+    .photo-caption {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      margin-top: var(--sp-1);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      border-top: 1px solid var(--border);
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--sp-6);
+      height: var(--sp-6);
+      flex-shrink: 0;
+    }
+
+    .bottom-left { display: flex; align-items: center; gap: var(--sp-4); }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .status-item .label { color: var(--text-2); }
+    .bottom-right { display: flex; gap: var(--sp-3); list-style: none; }
+
+    .bottom-right a {
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.18s ease;
+    }
+
+    .bottom-right a:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 800px) {
+      nav { padding: 0 var(--sp-2); }
+      .nav-links { gap: var(--sp-3); }
+      main { padding: calc(var(--sp-8) + var(--sp-4)) var(--sp-3) var(--sp-6); }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-section { order: -1; }
+      .photo-wrap { aspect-ratio: 4 / 3; }
+
+      .facts { grid-template-columns: 1fr; }
+
+      .bottom-bar {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--sp-2);
+        padding: var(--sp-2) var(--sp-3);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">nirvik@wsl:~$</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">about</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="blog.html">blog</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <p class="page-label">about me</p>
+      <h1 class="page-title">Nirvik Pande</h1>
+    </div>
+
+    <div class="about-grid">
+      <div class="bio-section">
+        <div class="bio-text">
+          <p>BIO HERE</p>
+        </div>
+
+        <div class="facts">
+          <div class="fact-item">
+            <span class="fact-label">school</span>
+            <span class="fact-value">Carnegie Mellon University</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">degree</span>
+            <span class="fact-value">B.S. Computer Science</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">concentrations</span>
+            <span class="fact-value">Machine Learning, Philosophy</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">location</span>
+            <span class="fact-value">Pittsburgh, PA</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">research</span>
+            <span class="fact-value"><a href="https://scholar.google.com/citations?user=csnn2EYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a></span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">contact</span>
+            <span class="fact-value"><a href="mailto:nirvikpande@gmail.com">nirvikpande@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-section">
+        <div class="photo-wrap">
+          <img src="assets/photo.jpg" alt="Nirvik Pande" />
+        </div>
+        <p class="photo-caption">// Pittsburgh, PA</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <div class="status-item">
+        <div class="status-dot"></div>
+        <span class="label">location:</span>&nbsp;Pittsburgh, PA
+      </div>
+    </div>
+    <ul class="bottom-right">
+      <li><a href="https://github.com/nirvik-pande" target="_blank" rel="noopener">github</a></li>
+      <li><a href="https://www.linkedin.com/in/nirvikpande/" target="_blank" rel="noopener">linkedin</a></li>
+      <li><a href="https://scholar.google.com/citations?user=csnn2EYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">scholar</a></li>
+      <li><a href="mailto:nirvikpande@gmail.com">email</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
