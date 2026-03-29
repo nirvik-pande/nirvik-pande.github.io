@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me — Nirvik Pande</title>
   <meta name="description" content="About Nirvik Pande — CS student at Carnegie Mellon School of Computer Science." />
-  <meta property="og:title" content="About — Nirvik Pande" />
+  <meta property="og:title" content="About Me — Nirvik Pande" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,7 +59,6 @@
       max-width: 1100px; width: 100%; margin: 0 auto;
     }
 
-    /* ── PAGE HEADER ── */
     .page-header { margin-bottom: var(--sp-8); }
 
     .page-label {
@@ -85,7 +84,6 @@
       margin-left: 2px; animation: blink 1s step-end infinite;
     }
 
-    /* ── ABOUT GRID ── */
     .about-grid { display: grid; grid-template-columns: 1fr 360px; gap: var(--sp-8); align-items: start; }
 
     .bio-section {
@@ -96,6 +94,8 @@
 
     .bio-text { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--text); line-height: 1.75; margin-bottom: var(--sp-6); }
     .bio-text p + p { margin-top: var(--sp-3); }
+    .bio-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(0,230,118,0.3); transition: border-color 0.18s ease; }
+    .bio-text a:hover { border-bottom-color: var(--accent); }
 
     .facts {
       border-top: 1px solid var(--border); padding-top: var(--sp-4);
@@ -108,8 +108,6 @@
     .fact-item { display: flex; flex-direction: column; gap: 4px; }
     .fact-label { font-family: var(--mono); font-size: var(--text-xs); color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; }
     .fact-value { font-family: var(--mono); font-size: var(--text-sm); color: var(--text-2); }
-    .bio-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(0,230,118,0.3); transition: border-color 0.18s ease; }
-    .bio-text a:hover { border-bottom-color: var(--accent); }
     .fact-value a { color: var(--accent); text-decoration: none; }
     .fact-value a:hover { text-decoration: underline; }
 
@@ -122,9 +120,7 @@
     .photo-wrap { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; border: 1px solid var(--border); }
     .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(20%) contrast(1.05); }
     .photo-wrap::after { content: ''; position: absolute; bottom: 0; right: 0; width: var(--sp-4); height: var(--sp-4); background: var(--accent); }
-    .photo-caption { font-family: var(--mono); font-size: var(--text-xs); color: var(--text-3); margin-top: var(--sp-1); letter-spacing: 0.06em; }
 
-    /* ── BOTTOM BAR ── */
     .bottom-bar {
       border-top: 1px solid var(--border); background: var(--bg-2);
       display: flex; align-items: center; justify-content: space-between;
@@ -170,9 +166,8 @@
     <div class="about-grid">
       <div class="bio-section" id="bio-section">
         <div class="bio-text">
-          <p>Hi, my name is Nirvik Pande and I'm a student at Carnegie Mellon studying computer science, with concentrations in machine learning and philosophy.</p>
-          <p>I'm from Austin, Texas, and growing up in the heart of Texas politics gave me a pretty direct view of how policy decisions play out in practice. That interest in how systems are structured and how they affect people is part of what drew me toward CS and machine learning. I like problems that have real structure underneath them, even when they look messy on the surface.</p>
-          <p>The same thing is true of why I care about philosophy. The subtopics I find most interesting are <a href="https://en.wikipedia.org/wiki/Philosophy_of_religion" target="_blank" rel="noopener">philosophy of religion</a> and <a href="https://en.wikipedia.org/wiki/Formal_epistemology" target="_blank" rel="noopener">formal epistemology</a>. Both fields ask hard questions about belief, justification, and reasoning under uncertainty, with more overlap with topics in Artifical Intelligence than most people expect.</p>
+          <p>Hi, my name is Nirvik Pande and I'm a student at Carnegie Mellon. I'm from Austin, Texas, and growing up in the heart of Texas politics gave me a pretty direct view of how policy decisions play out in practice. That interest in how systems are structured and how they affect people is part of what drew me toward CS and machine learning. I like problems that have real structure underneath them, even when they look messy on the surface.</p>
+          <p>The same thing is true of why I care about philosophy. The subtopics I find most interesting are <a href="https://en.wikipedia.org/wiki/Philosophy_of_religion" target="_blank" rel="noopener">philosophy of religion</a> and <a href="https://en.wikipedia.org/wiki/Formal_epistemology" target="_blank" rel="noopener">formal epistemology</a>. Both fields ask hard questions about belief, justification, and reasoning under uncertainty, with more overlap with topics in Artificial Intelligence than most people expect.</p>
           <p>At CMU I'm doing research at the Biorobotics Lab on <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)" target="_blank" rel="noopener">heuristic optimization</a>, finding solutions that are good enough when finding the best possible solution is computationally out of reach. Outside of research I work on <a href="https://en.wikipedia.org/wiki/AI_safety" target="_blank" rel="noopener">AI safety</a>, both technically and on the policy side.</p>
         </div>
         <div class="facts" id="facts">
@@ -198,7 +193,7 @@
           </div>
           <div class="fact-item">
             <span class="fact-label">contact</span>
-            <span class="fact-value"><a href="/cdn-cgi/l/email-protection#5836312a2e31332839363c3d183f35393134763b3735"><span class="__cf_email__" data-cfemail="c0aea9b2b6a9abb0a1aea4a580a7ada1a9aceea3afad">[email&#160;protected]</span></a></span>
+            <span class="fact-value"><a href="mailto:nirvikpande@gmail.com">nirvikpande@gmail.com</a></span>
           </div>
         </div>
       </div>
@@ -207,7 +202,6 @@
         <div class="photo-wrap">
           <img src="assets/photo.jpg" alt="Nirvik Pande" />
         </div>
-        <!--<p class="photo-caption">// Pittsburgh, PA</p>-->
       </div>
     </div>
   </main>
@@ -223,11 +217,11 @@
       <li><a href="https://github.com/nirvik-pande" target="_blank" rel="noopener">github</a></li>
       <li><a href="https://www.linkedin.com/in/nirvikpande/" target="_blank" rel="noopener">linkedin</a></li>
       <li><a href="https://scholar.google.com/citations?user=csnn2EYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">scholar</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#fd93948f8b94968d9c939998bd9a909c9491d39e9290">email</a></li>
+      <li><a href="mailto:nirvikpande@gmail.com">email</a></li>
     </ul>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const wait = ms => new Promise(r => setTimeout(r, ms));
 
     async function typeInto(el, text, speed = 55) {
@@ -242,21 +236,13 @@
 
     async function runSequence() {
       await wait(120);
-
-      // 1. label fades up
       document.getElementById('page-label').classList.add('visible');
       await wait(300);
-
-      // 2. title types in
       await typeInto(document.getElementById('page-title'), 'About Me');
       await wait(200);
-
-      // 3. photo + bio fade up together
       document.getElementById('bio-section').classList.add('visible');
       document.getElementById('photo-section').classList.add('visible');
       await wait(250);
-
-      // 4. facts fade up
       document.getElementById('facts').classList.add('visible');
     }
 
