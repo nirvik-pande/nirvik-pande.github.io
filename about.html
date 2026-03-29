@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     :root {
       --bg:       #111111; --bg-2: #191919; --bg-3: #222222;
       --border:   #2e2e2e; --border-hi: #555550;
@@ -24,7 +24,7 @@
       --sp-5:40px; --sp-6:48px; --sp-8:64px; --sp-10:80px;
       --text-xs:11px; --text-sm:13px; --text-base:16px;
     }
- 
+
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg); color: var(--text);
@@ -32,13 +32,13 @@
       line-height: 1.6; min-height: 100vh; overflow-x: hidden;
       display: flex; flex-direction: column;
     }
- 
+
     body::before {
       content: ''; position: fixed; inset: 0;
       background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
       pointer-events: none; z-index: 9999;
     }
- 
+
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -52,16 +52,16 @@
     .nav-links a::before { content: '// '; color: var(--text-3); transition: color 0.18s ease; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .nav-links a:hover::before, .nav-links a.active::before { color: var(--accent); }
- 
+
     main {
       flex: 1;
       padding: calc(var(--sp-8) + var(--sp-6)) var(--sp-6) var(--sp-8);
       max-width: 1100px; width: 100%; margin: 0 auto;
     }
- 
+
     /* ── PAGE HEADER ── */
     .page-header { margin-bottom: var(--sp-8); }
- 
+
     .page-label {
       font-family: var(--mono); font-size: var(--text-xs);
       color: var(--text-3); letter-spacing: 0.2em; text-transform: uppercase;
@@ -72,31 +72,31 @@
     }
     .page-label::before { content: ''; display: block; width: var(--sp-4); height: 1px; background: var(--border-hi); }
     .page-label.visible { opacity: 1; transform: translateY(0); }
- 
+
     .page-title {
       font-family: var(--sans); font-size: clamp(36px, 5vw, 56px);
       font-weight: 700; line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
       min-height: 1.1em;
     }
- 
+
     .type-cursor {
       display: inline-block; width: 3px; height: 0.85em;
       background: var(--accent); vertical-align: middle;
       margin-left: 2px; animation: blink 1s step-end infinite;
     }
- 
+
     /* ── ABOUT GRID ── */
     .about-grid { display: grid; grid-template-columns: 1fr 360px; gap: var(--sp-8); align-items: start; }
- 
+
     .bio-section {
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
     .bio-section.visible { opacity: 1; transform: translateY(0); }
- 
+
     .bio-text { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--text); line-height: 1.75; margin-bottom: var(--sp-6); }
     .bio-text p + p { margin-top: var(--sp-3); }
- 
+
     .facts {
       border-top: 1px solid var(--border); padding-top: var(--sp-4);
       display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3) var(--sp-6);
@@ -104,7 +104,7 @@
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
     .facts.visible { opacity: 1; transform: translateY(0); }
- 
+
     .fact-item { display: flex; flex-direction: column; gap: 4px; }
     .fact-label { font-family: var(--mono); font-size: var(--text-xs); color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; }
     .fact-value { font-family: var(--mono); font-size: var(--text-sm); color: var(--text-2); }
@@ -112,18 +112,18 @@
     .bio-text a:hover { border-bottom-color: var(--accent); }
     .fact-value a { color: var(--accent); text-decoration: none; }
     .fact-value a:hover { text-decoration: underline; }
- 
+
     .photo-section {
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
     .photo-section.visible { opacity: 1; transform: translateY(0); }
- 
+
     .photo-wrap { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; border: 1px solid var(--border); }
     .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(20%) contrast(1.05); }
     .photo-wrap::after { content: ''; position: absolute; bottom: 0; right: 0; width: var(--sp-4); height: var(--sp-4); background: var(--accent); }
     .photo-caption { font-family: var(--mono); font-size: var(--text-xs); color: var(--text-3); margin-top: var(--sp-1); letter-spacing: 0.06em; }
- 
+
     /* ── BOTTOM BAR ── */
     .bottom-bar {
       border-top: 1px solid var(--border); background: var(--bg-2);
@@ -137,9 +137,9 @@
     .bottom-right { display: flex; gap: var(--sp-3); list-style: none; }
     .bottom-right a { font-family: var(--mono); font-size: var(--text-xs); color: var(--text-3); text-decoration: none; transition: color 0.18s ease; }
     .bottom-right a:hover { color: var(--accent); }
- 
+
     @keyframes blink { 50% { opacity: 0; } }
- 
+
     @media (max-width: 800px) {
       nav { padding: 0 var(--sp-2); } .nav-links { gap: var(--sp-3); }
       main { padding: calc(var(--sp-8) + var(--sp-4)) var(--sp-3) var(--sp-6); }
@@ -151,7 +151,7 @@
   </style>
 </head>
 <body>
- 
+
   <nav>
     <a href="index.html" class="nav-logo">nirvik@wsl:~$</a>
     <ul class="nav-links">
@@ -160,18 +160,19 @@
       <li><a href="blog.html">blog</a></li>
     </ul>
   </nav>
- 
+
   <main>
     <div class="page-header">
       <p class="page-label" id="page-label">biography</p>
       <h1 class="page-title" id="page-title"><span class="type-cursor"></span></h1>
     </div>
- 
+
     <div class="about-grid">
       <div class="bio-section" id="bio-section">
         <div class="bio-text">
-          <p>Hi, my name is Nirvik Pande and I'm currently a student at Carnegie Mellon. I'm from Austin, Texas, and growing up there gave me a pretty direct view of how policy decisions play out in practice. That interest in how systems are structured and how they affect people is part of what drew me toward CS and AI. I like problems that have real structure underneath them, even when they look messy on the surface.</p>
-          <p>The same thing is true of why I care about philosophy. The subtopics I find most interesting are <a href="https://en.wikipedia.org/wiki/Philosophy_of_religion" target="_blank" rel="noopener">philosophy of religion</a> and <a href="https://en.wikipedia.org/wiki/Formal_epistemology" target="_blank" rel="noopener">formal epistemology</a>. Both fields raise hard questions about belief, justification, and reasoning under uncertainty, with more overlap with AI than most people expect.</p>
+          <p>Hi, my name is Nirvik Pande and I'm a student at Carnegie Mellon studying computer science, with concentrations in machine learning and philosophy.</p>
+          <p>I'm from Austin, Texas, and growing up there gave me a pretty direct view of how policy decisions play out in practice. That interest in how systems are structured and how they affect people is part of what drew me toward CS and machine learning. I like problems that have real structure underneath them, even when they look messy on the surface.</p>
+          <p>The same thing is true of why I care about philosophy. I find most interesting are <a href="https://en.wikipedia.org/wiki/Philosophy_of_religion" target="_blank" rel="noopener">philosophy of religion</a> and <a href="https://en.wikipedia.org/wiki/Formal_epistemology" target="_blank" rel="noopener">formal epistemology</a> — fields that ask hard questions about belief, justification, and reasoning under uncertainty, with more overlap with ML than most people expect.</p>
           <p>At CMU I'm doing research at the Biorobotics Lab on <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)" target="_blank" rel="noopener">heuristic optimization</a>, finding solutions that are good enough when finding the best possible solution is computationally out of reach. Outside of research I work on <a href="https://en.wikipedia.org/wiki/AI_safety" target="_blank" rel="noopener">AI safety</a>, both technically and on the policy side.</p>
         </div>
         <div class="facts" id="facts">
@@ -201,7 +202,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="photo-section" id="photo-section">
         <div class="photo-wrap">
           <img src="assets/photo.jpg" alt="Nirvik Pande" />
@@ -210,7 +211,7 @@
       </div>
     </div>
   </main>
- 
+
   <div class="bottom-bar">
     <div class="bottom-left">
       <div class="status-item">
@@ -225,10 +226,10 @@
       <li><a href="/cdn-cgi/l/email-protection#fd93948f8b94968d9c939998bd9a909c9491d39e9290">email</a></li>
     </ul>
   </div>
- 
+
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const wait = ms => new Promise(r => setTimeout(r, ms));
- 
+
     async function typeInto(el, text, speed = 55) {
       const cursor = el.querySelector('.type-cursor');
       for (let i = 0; i <= text.length; i++) {
