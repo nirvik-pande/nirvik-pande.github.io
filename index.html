@@ -1,516 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nirvik Pande — CS Student at CMU</title>
-  <meta name="description" content="Nirvik Pande is a Computer Science student at Carnegie Mellon University's School of Computer Science." />
-  <meta property="og:title" content="Nirvik Pande" />
-  <meta property="og:description" content="CS student at Carnegie Mellon School of Computer Science." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@500;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    :root {
-      --bg:       #111111;
-      --bg-2:     #191919;
-      --bg-3:     #222222;
-      --border:   #2e2e2e;
-      --border-hi:#555550;
-      --text:     #f0ede6;
-      --text-2:   #aaa89f;
-      --text-3:   #666660;
-      --accent:   #00e676;
-      --mono: 'IBM Plex Mono', monospace;
-      --sans: 'Syne', sans-serif;
-      --sp-1: 8px;
-      --sp-2: 16px;
-      --sp-3: 24px;
-      --sp-4: 32px;
-      --sp-5: 40px;
-      --sp-6: 48px;
-      --sp-8: 64px;
-      --sp-10: 80px;
-      --text-xs:   11px;
-      --text-sm:   13px;
-      --text-base: 16px;
-    }
- 
-    html { scroll-behavior: smooth; }
- 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      /* prevent page-level vertical scroll from content overshoot */
-      display: flex;
-      flex-direction: column;
-    }
- 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg, transparent, transparent 2px,
-        rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
-      );
-      pointer-events: none;
-      z-index: 9999;
-    }
- 
-    /* ── BOOT ── */
-    #boot {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      transition: opacity 0.5s ease;
-    }
- 
-    #boot.fade-out { opacity: 0; pointer-events: none; }
- 
-    /* key fix: boot-inner uses a fixed left edge so all lines share the same x */
-    .boot-inner {
-      width: min(640px, 88vw);
-      display: flex;
-      flex-direction: column;
-    }
- 
-    .boot-line {
-      font-size: var(--text-sm);
-      line-height: 1.9;
-      color: var(--accent);
-      opacity: 0;
-      transition: opacity 0.15s ease;
-      /* no white-space:pre so lines wrap naturally and stay left-aligned */
-    }
- 
-    .boot-line.visible { opacity: 1; }
-    .boot-line .cmd { color: #fff; }
-    .boot-line .url { color: #80ffcc; }
- 
-    .boot-cursor {
-      display: inline-block;
-      width: 8px;
-      height: 13px;
-      background: var(--accent);
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
-    }
- 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--sp-6);
-      background: rgba(17,17,17,0.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      height: var(--sp-8);
-    }
- 
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      text-decoration: none;
-    }
- 
-    .nav-links { display: flex; gap: var(--sp-5); list-style: none; }
- 
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-      color: var(--text-2);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.18s ease;
-    }
- 
-    .nav-links a::before { content: '// '; color: var(--text-3); transition: color 0.18s ease; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::before { color: var(--accent); }
- 
-    /* ── HERO ── */
-    .hero {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: var(--sp-8) var(--sp-6) var(--sp-4);
-      gap: var(--sp-8);
-      position: relative;
-      /* top padding accounts for fixed nav */
-      padding-top: calc(var(--sp-8) + var(--sp-4));
-    }
- 
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px;
-      opacity: 0.25;
-      z-index: -1;
-      pointer-events: none;
-    }
- 
-    .hero-left { max-width: 560px; }
- 
-    .hero-name {
-      font-family: var(--sans);
-      font-size: clamp(52px, 7vw, 88px);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.025em;
-      color: var(--text);
-      margin-bottom: var(--sp-2);
-    }
- 
-    .scramble-outlined {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--border-hi);
-      display: inline-block;
-    }
- 
-    .hero-sub {
-      font-family: var(--mono);
-      font-size: var(--text-sm);
-      color: var(--text-2);
-      line-height: 1.7;
-      margin-bottom: var(--sp-4);
-      /* no max-width constraint that clips the subtitle */
-    }
- 
-    .hero-sub strong { color: var(--accent); font-weight: 400; }
- 
-    .hero-cta { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
- 
-    .btn {
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.08em;
-      padding: 0 var(--sp-3);
-      height: var(--sp-5);
-      text-decoration: none;
-      border: 1px solid;
-      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: var(--sp-1);
-      white-space: nowrap;
-    }
- 
-    .btn-primary { background: var(--accent); color: #000; border-color: var(--accent); }
-    .btn-primary:hover { background: transparent; color: var(--accent); }
-    .btn-ghost { background: transparent; color: var(--text-2); border-color: var(--border-hi); }
-    .btn-ghost:hover { border-color: var(--text-2); color: var(--text); }
- 
-    /* ── TERMINAL ── */
-    .hero-right { display: flex; justify-content: flex-end; align-items: center; }
- 
-    .terminal {
-      width: 100%;
-      max-width: 440px;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-    }
- 
-    .terminal-bar {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-1);
-      padding: 0 var(--sp-2);
-      background: var(--bg-3);
-      border-bottom: 1px solid var(--border);
-      height: var(--sp-4);
-    }
- 
-    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .dot-r { background: #ff5f57; }
-    .dot-y { background: #febc2e; }
-    .dot-g { background: #28c840; }
- 
-    .terminal-title { margin-left: auto; font-size: var(--text-xs); color: var(--text-3); letter-spacing: 0.08em; }
- 
-    .terminal-body { padding: var(--sp-3); line-height: 1.9; color: var(--text-2); }
- 
-    .t-prompt  { color: var(--accent); }
-    .t-cmd     { color: var(--text); }
-    .t-key     { color: #80ffcc; }
-    .t-val     { color: var(--text); }
-    .t-comment { color: var(--text-3); }
- 
-    .cursor {
-      display: inline-block;
-      width: 7px; height: 13px;
-      background: var(--accent);
-      animation: blink 1.1s step-end infinite;
-      vertical-align: middle;
-    }
- 
-    /* ── BOTTOM BAR — single unified strip ── */
-    .bottom-bar {
-      border-top: 1px solid var(--border);
-      background: var(--bg-2);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--sp-6);
-      height: var(--sp-6);
-      flex-shrink: 0;
-      /* no overflow-x: auto — content fits in one line */
-    }
- 
-    .bottom-left {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-4);
-    }
- 
-    .status-item {
-      display: flex;
-      align-items: center;
-      gap: var(--sp-1);
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-      color: var(--text-3);
-      white-space: nowrap;
-    }
- 
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
- 
-    .status-item .label { color: var(--text-2); }
- 
-    .bottom-right { display: flex; gap: var(--sp-3); list-style: none; }
- 
-    .bottom-right a {
-      font-family: var(--mono);
-      font-size: var(--text-xs);
-      color: var(--text-3);
-      text-decoration: none;
-      transition: color 0.18s ease;
-    }
- 
-    .bottom-right a:hover { color: var(--accent); }
- 
-    /* ── ANIMATIONS ── */
-    @keyframes blink { 50% { opacity: 0; } }
- 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
- 
-    .hero-name { animation: fadeUp 0.5s 0.08s ease both; }
-    .hero-sub  { animation: fadeUp 0.5s 0.16s ease both; }
-    .hero-cta  { animation: fadeUp 0.5s 0.24s ease both; }
-    .terminal  { animation: fadeUp 0.5s 0.16s ease both; }
- 
-    /* ── MOBILE ── */
-    @media (max-width: 800px) {
-      nav { padding: 0 var(--sp-2); }
-      .nav-links { gap: var(--sp-3); }
- 
-      .hero {
-        grid-template-columns: 1fr;
-        padding: var(--sp-10) var(--sp-3) var(--sp-4);
-        gap: var(--sp-5);
-      }
- 
-      .hero-right { justify-content: flex-start; }
-      .terminal { max-width: 100%; }
-      .hero-name { font-size: clamp(44px, 13vw, 64px); }
- 
-      .bottom-bar {
-        height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--sp-2);
-        padding: var(--sp-2) var(--sp-3);
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nirvik Pande</title>
+<meta name="description" content="Nirvik Pande — computer science, mathematics, and philosophy at Carnegie Mellon.">
+<meta name="theme-color" content="#F7F2E8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
-<body>
- 
-  <!-- BOOT -->
-  <div id="boot">
-    <div class="boot-inner">
-      <div class="boot-line visible" id="bl-0"><span>nirvik@wsl:~$ </span><span id="typed-cmd"></span><span class="boot-cursor" id="boot-cur"></span></div>
-      <div class="boot-line" id="bl-1"></div>
-      <div class="boot-line" id="bl-2"></div>
-    </div>
-  </div>
- 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">nirvik@wsl:~$</a>
-    <ul class="nav-links">
+<body data-terminal="open">
+
+<header class="site-header">
+  <p class="wordmark"><a href="index.html">Nirvik Pande</a></p>
+  <nav aria-label="Primary">
+    <ul>
       <li><a href="about.html">about</a></li>
       <li><a href="projects.html">projects</a></li>
-      <li><a href="blog.html">blog</a></li>
+      <li><a href="interactive.html">interactive</a></li>
     </ul>
   </nav>
- 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <h1 class="hero-name">
-        <span class="scramble" data-text="Nirvik">Nirvik</span><br>
-        <span class="scramble scramble-outlined" data-text="Pande">Pande</span>
-      </h1>
-      <p class="hero-sub">
-        Student at <strong>Carnegie Mellon School of Computer Science.</strong><br>
-        Ad astra per aspera.
-      </p>
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary">view projects →</a>
-        <a href="#" class="btn btn-ghost">get in touch</a>
-      </div>
-    </div>
- 
-    <div class="hero-right">
-      <div class="terminal">
-        <div class="terminal-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="terminal-title">nirvik@wsl: ~</span>
-        </div>
-        <div class="terminal-body">
-          <div><span class="t-prompt">~$</span><span class="t-cmd"> whoami</span></div>
-          <div>nirvik pande</div>
-          <br>
-          <div><span class="t-prompt">~$</span><span class="t-cmd"> cat info.json</span></div>
-          <div>{</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"school"</span>: <span class="t-val">"CMU SCS"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"concentrations"</span>: [</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"machine learning"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"philosophy"</span></div>
-          <div>&nbsp;&nbsp;]</div>
-          <div>}</div>
-          <br>
-          <div><span class="t-prompt">~$</span><span class="t-cmd"> ls projects/</span></div>
-          <div class="t-comment"># coming soon</div>
-          <br>
-          <div><span class="t-prompt">~$</span> <span class="cursor"></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- BOTTOM BAR — location + footer links in one strip -->
-  <div class="bottom-bar">
-    <div class="bottom-left">
-      <div class="status-item">
-        <div class="status-dot"></div>
-        <span class="label">location:</span>&nbsp;Pittsburgh, PA
-      </div>
-    </div>
-    <ul class="bottom-right">
-      <li><a href="https://github.com/nirvik-pande" target="_blank" rel="noopener">github</a></li>
-      <li><a href="https://www.linkedin.com/in/nirvikpande/" target="_blank" rel="noopener">linkedin</a></li>
-      <li><a href="https://scholar.google.com/citations?user=csnn2EYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">scholar</a></li>
-      <li><a href="mailto:nirvikpande@gmail.com">email</a></li>
+</header>
+
+<main class="shell">
+
+  <div class="intro">
+    <h1 data-type>Hi, I'm Nirvik.</h1>
+
+    <!-- Virgil, Georgics II. Drop the <cite> if you'd rather leave it
+         unattributed, or add a translation in a title attribute. -->
+    <p class="motto">Felix, qui potuit rerum cognoscere causas.<cite>Virgil</cite></p>
+
+    <p>I'm a sophomore at Carnegie Mellon University studying computer science,
+    mathematics, and philosophy. I am currently most interested in AI safety and
+    technical alignment. Separately, I also spend time working on how our
+    political institutions will need to adapt in the presence of powerful
+    artificial intelligence, and building public awareness on AI and its
+    associated risks.</p>
+
+    <p><a href="about.html">More about me and what I'm working on.</a></p>
+
+    <ul class="links">
+      <li><a href="mailto:nirvikpande@gmail.com">nirvikpande@gmail.com</a></li>
+      <li><a href="https://github.com/nirvik-pande">github</a></li>
+      <li><a href="#">linkedin</a></li>
     </ul>
   </div>
- 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const typedEl = document.getElementById('typed-cmd');
-    const bootCur = document.getElementById('boot-cur');
-    const bl1     = document.getElementById('bl-1');
-    const bl2     = document.getElementById('bl-2');
-    const bootEl  = document.getElementById('boot');
- 
-    const wait = ms => new Promise(r => setTimeout(r, ms));
- 
-    async function typeText(el, text, speed = 65) {
-      for (let i = 0; i <= text.length; i++) {
-        el.textContent = text.slice(0, i);
-        await wait(speed + Math.random() * 28);
-      }
-    }
- 
-    async function runBoot() {
-      await wait(320);
-      await typeText(typedEl, 'npm run start');
-      bootCur.style.display = 'none';
- 
-      await wait(180);
-      bl1.textContent = 'Server starting...';
-      bl1.classList.add('visible');
- 
-      await wait(820);
-      bl2.innerHTML = 'Server listening on <span class="url">http://localhost:5173</span>';
-      bl2.classList.add('visible');
- 
-      await wait(960);
-      bootEl.classList.add('fade-out');
-      await wait(520);
-      bootEl.style.display = 'none';
-      startScrambleLoop();
-    }
- 
-    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';
- 
-    function scramble(el) {
-      const target = el.dataset.text;
-      const len = target.length;
-      const FRAMES = 22;
-      let frame = 0;
-      const iv = setInterval(() => {
-        const resolved = Math.floor((frame / FRAMES) * len);
-        let out = '';
-        for (let i = 0; i < len; i++) {
-          out += i < resolved ? target[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
-        }
-        el.textContent = out;
-        if (++frame > FRAMES) { clearInterval(iv); el.textContent = target; }
-      }, 40);
-    }
- 
-    function scrambleAll() {
-      document.querySelectorAll('.scramble').forEach((el, i) => {
-        setTimeout(() => scramble(el), i * 160);
-      });
-    }
- 
-    function startScrambleLoop() {
-      scrambleAll();
-      setInterval(scrambleAll, 7000);
-    }
 
-    document.querySelector('.hero-name').addEventListener('mouseenter', scrambleAll);
+  <div id="terminal-mount"></div>
 
-    runBoot();
-  </script>
+</main>
+
+<script src="terminal.js?v=8"></script>
 </body>
 </html>
