@@ -92,8 +92,8 @@
         });
       },
       whoami: function () {
-        print('Nirvik Pande — sophomore, Carnegie Mellon.');
-        print('CS, math, philosophy. AI safety, mostly alignment.');
+        print('Nirvik Pande, sophomore at Carnegie Mellon SCS.');
+        print('CS, math, philosophy. AI safety, robotics.');
         print('nirvikpande@gmail.com', 'term-dim');
       },
       clear: function () {
