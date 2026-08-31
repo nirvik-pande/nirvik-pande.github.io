@@ -8,7 +8,7 @@
 
 (function () {
 
-  console.log('terminal.js v9 loaded');
+  console.log('terminal.js v10 loaded');
 
   /* --------------------------------------------------------
      Pages. Add one line here and it appears in ls, cd, and
@@ -92,8 +92,8 @@
         });
       },
       whoami: function () {
-        print('Nirvik Pande, sophomore at Carnegie Mellon SCS.');
-        print('CS, math, philosophy. AI safety, robotics.');
+        print('Nirvik Pande — sophomore, Carnegie Mellon.');
+        print('CS, math, philosophy. AI safety, mostly alignment.');
         print('nirvikpande@gmail.com', 'term-dim');
       },
       clear: function () {

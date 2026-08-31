@@ -378,6 +378,53 @@ a:hover { text-decoration-color: var(--accent); }
 }
 
 /* ============================================================
+   project entries
+   ============================================================ */
+
+.entry {
+  border-top: 1px solid var(--rule);
+  padding: 1.6rem 0;
+}
+
+.entry:last-of-type { border-bottom: 1px solid var(--rule); }
+
+.entry h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 0.2rem;
+}
+
+.entry .meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  margin: 0 0 0.8rem;
+}
+
+.entry p { margin: 0 0 0.75rem; }
+.entry p:last-child { margin-bottom: 0; }
+
+.entry .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+}
+
+.entry .tags li {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--ink-mid);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+}
+
+/* ============================================================
    typed headline
    ============================================================ */
 
