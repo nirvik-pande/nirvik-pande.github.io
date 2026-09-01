@@ -35,14 +35,13 @@
 
     <div class="entry">
       <h3>RLMOpt: Adaptive Prompt Optimization via Recursive Language Models</h3>
-      <p class="meta">S. Bangalore Satheesha, N. Pande, D. Duddempudi, B. Dandala &middot; arXiv preprint &middot; August 2026</p>
+      <p class="meta">S. Bangalore Satheesha, N. Pande, D. Duddempudi, B. Dandala &middot; aiming ICLR &middot; August 2026</p>
       <p>Prompt search driven by a recursive language model agent rather than a
       fixed optimizer. It beats GEPA, the current state of the art, on all four
-      benchmarks and on 9 of 11 matched runs &mdash; while using fewer rollouts
+      benchmarks and on 9 of 11 matched runs, while using fewer rollouts
       and producing prompts 27&ndash;79% the size of GEPA's.</p>
       <ul class="refs">
-        <li><span class="label">paper</span><a href="https://arxiv.org/abs/2608.10471">arXiv:2608.10471</a></li>
-        <li><span class="label">code</span><a href="https://github.com/nirvik-pande/DARPO">github.com/nirvik-pande/DARPO</a></li>
+        <li><span class="label">paper&mdash;</span><a href="https://arxiv.org/abs/2608.10471">arXiv:2608.10471</a></li>
       </ul>
       <ul class="tags">
         <li>prompt optimization</li>
@@ -59,7 +58,7 @@
       accuracy comparable to binary32. The result makes 8-bit training viable
       on cheaper hardware.</p>
       <ul class="refs">
-        <li><span class="label">paper</span><a href="https://doi.org/10.1109/ARITH64983.2025.00013">doi:10.1109/ARITH64983.2025.00013</a></li>
+        <li><span class="label">paper&mdash;</span><a href="https://doi.org/10.1109/ARITH64983.2025.00013">doi:10.1109/ARITH64983.2025.00013</a></li>
       </ul>
       <ul class="tags">
         <li>numerical formats</li>
@@ -67,6 +66,24 @@
         <li>hardware</li>
       </ul>
     </div>
+
+    <h2>Industry</h2>
+
+    <div class="entry">
+      <h3>Model alignment for prior authorization</h3>
+      <p class="meta">Autonomize AI &middot; Machine Learning Engineer Intern &middot; May &ndash; August 2026</p>
+      <p>Built the company's first RL-based alignment pipeline for an AI-driven
+      prior authorization system, raising clinical decision accuracy over the heuristic baseline it replaced.</p>
+      <p>The alignment objective was Kahneman&ndash;Tversky Optimization: a
+      prospect-theoretic utility function that trains directly on binary
+      accept/reject signals, which removes the dependence on paired preference
+      data that made the alternative approaches impractical here.</p>
+      <ul class="tags">
+        <li>RLHF / KTO</li>
+        <li>PyTorch</li>
+        <li>healthcare</li>
+      </ul>
+    </div>  
 
     <h2>Research</h2>
 
@@ -76,9 +93,9 @@
       <p>Scalable multi-agent path planning with collision avoidance, for
       systems where agents visit multiple targets and discretising the space
       into a grid throws away too much.</p>
-      <p>I implemented SI-RRT* in C++ as the low-level planner, combining safe
+      <p>Built SI-RRT* as the low-level planner, combining safe
       interval dynamic obstacle avoidance with a constraint table so the
-      planner supports LNS-based replanning. The current work is a metaheuristic
+      planner supports LNS-based replanning. Currently working on metaheuristic
       for the high-level multi-agent combinatorial path finding search, aiming
       at lower solution cost and better scaling than the LNS approach it
       replaces.</p>
@@ -89,38 +106,7 @@
       </ul>
     </div>
 
-    <div class="entry">
-      <h3>IEEE P3109 &mdash; 8-bit binary arithmetic for machine learning</h3>
-      <p class="meta">University of British Columbia &middot; May 2024 &ndash; April 2025</p>
-      <p>Evaluated candidate float8 encodings for the P3109 standard against
-      training stability and hardware cost, and adapted final-layer DNN
-      activation functions to hold accuracy under 8-bit formats.</p>
-      <ul class="tags">
-        <li>standards</li>
-        <li>low precision</li>
-      </ul>
-    </div>
-
-    <h2>Industry</h2>
-
-    <div class="entry">
-      <h3>Model alignment for prior authorization</h3>
-      <p class="meta">Autonomize AI &middot; Machine Learning Engineer Intern &middot; May &ndash; August 2026</p>
-      <p>Built the company's first RL-based alignment pipeline for an AI-driven
-      prior authorization system, raising clinical decision accuracy from 87% to
-      94% over the heuristic baseline it replaced.</p>
-      <p>The alignment objective was Kahneman&ndash;Tversky Optimization: a
-      prospect-theoretic utility function that trains directly on binary
-      accept/reject signals, which removes the dependence on paired preference
-      data that made the alternative approaches impractical here.</p>
-      <ul class="tags">
-        <li>RLHF / KTO</li>
-        <li>PyTorch</li>
-        <li>healthcare</li>
-      </ul>
-    </div>
-
-    <h2>Fieldbuilding</h2>
+    <h2>Organizations</h2>
 
     <div class="entry">
       <h3><a href="https://cmuaisafety.com/">Carnegie AI Safety Initiative</a></h3>
@@ -128,7 +114,8 @@
       <!-- EDIT: the only bracketed item left. Say what you run — a reading
            group, a speaker series, a curriculum — and roughly how many people
            it reaches. Numbers are what make fieldbuilding legible. -->
-      <p>[What you run and how many people go through it.]</p>
+      <p>I am a core member at CASI, currently focusing on build public awareness of the advancement of AI and its associated societal risks with our public outreach intiative.</p>
+      <p>Recently, I’ve also worked on how public institutions can build the capacity to prevent and manage severe safety risks from powerful AI.</p>
       <ul class="tags">
         <li>AI safety</li>
         <li>education</li>
@@ -141,11 +128,8 @@
       <h3><a href="https://nirvikpande.substack.com/">Substack</a></h3>
       <!-- EDIT: link two or three specific posts. A bare newsletter link asks
            the reader to pick, and they won't. -->
-      <p>[One line on what you write about there.]</p>
+      <p>My thoughts on a wide array of stuff (mainly philosophy and politics).</p>
     </div>
-
-    <p class="spaced">Other code, including coursework, is on
-    <a href="https://github.com/nirvik-pande">GitHub</a>.</p>
 
     <ul class="links">
       <li><a href="index.html">&larr; home</a></li>
