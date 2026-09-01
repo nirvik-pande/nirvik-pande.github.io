@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects — Nirvik Pande</title>
-<meta name="description" content="Research in metaheuristic optimization and prompt optimization, fieldbuilding, and AI governance work.">
+<meta name="description" content="Research in prompt optimization, multi-agent path planning, and low-precision arithmetic for machine learning.">
 <meta name="theme-color" content="#F7F2E8">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -31,48 +31,92 @@
 
     <h1 class="sub">Projects.</h1>
 
-    <h2>Research</h2>
+    <h2>Publications</h2>
 
     <div class="entry">
-      <h3><a href="https://github.com/nirvik-pande/DARPO">DARPO</a></h3>
-      <p class="meta">Dynamic Agentic RLM Prompt Optimization &middot; Autonomize AI &middot; [dates]</p>
-      <!-- EDIT: the strongest item on your site. Three things a reader needs:
-           what problem existing prompt optimization failed at, what DARPO does
-           differently, and what the results were. Numbers if you have them —
-           benchmark, baseline, delta. -->
-      <p>[What problem this addresses, in one sentence a non-specialist can
-      follow.]</p>
-      <p>[What the method does differently, and what the results showed.]</p>
+      <h3>RLMOpt: Adaptive Prompt Optimization via Recursive Language Models</h3>
+      <p class="meta">S. Bangalore Satheesha, N. Pande, D. Duddempudi, B. Dandala &middot; arXiv preprint &middot; August 2026</p>
+      <p>Prompt search driven by a recursive language model agent rather than a
+      fixed optimizer. It beats GEPA, the current state of the art, on all four
+      benchmarks and on 9 of 11 matched runs &mdash; while using fewer rollouts
+      and producing prompts 27&ndash;79% the size of GEPA's.</p>
       <ul class="refs">
-        <li><span class="label">paper</span><span class="pending">under submission &mdash; link on acceptance</span></li>
+        <li><span class="label">paper</span><a href="https://arxiv.org/abs/2608.10471">arXiv:2608.10471</a></li>
         <li><span class="label">code</span><a href="https://github.com/nirvik-pande/DARPO">github.com/nirvik-pande/DARPO</a></li>
       </ul>
       <ul class="tags">
         <li>prompt optimization</li>
-        <li>alignment</li>
         <li>LLM agents</li>
+        <li>Python</li>
       </ul>
     </div>
 
     <div class="entry">
-      <h3>Metaheuristic optimization</h3>
-      <p class="meta">CMU <a href="https://biorobotics.ri.cmu.edu/">Biorobotics Lab</a> &middot; [dates]</p>
-      <!-- EDIT: name the actual problem. "High-dimensional planning" is a
-           field, not a project. What system, what search method, what were
-           you trying to beat? -->
-      <p>[The specific problem and why exact methods don't work on it.]</p>
-      <p>[What you did and what came of it. If it's ongoing, say what you're
-      currently trying.]</p>
+      <h3>Range Extension with Supernormals for Mixed-Precision 8-bit DNN Training</h3>
+      <p class="meta">S. W. Pun, B. Bao, S.-I. Filip, G. Lemieux, J. V. Kim, N. Misyats, N. Pande, V. Ravain, R. Sherrick &middot; IEEE ARITH 32 &middot; May 2025</p>
+      <p>Supernormal 8-bit encodings that replace subnormals, extending range
+      from 33 to 36 binades and cutting multiply-accumulate area while holding
+      accuracy comparable to binary32. The result makes 8-bit training viable
+      on cheaper hardware.</p>
       <ul class="refs">
-        <!-- EDIT: add a paper, preprint, poster, or talk when there is one.
-             Delete any line that has nothing behind it. -->
-        <li><span class="label">paper</span><span class="pending">in progress</span></li>
-        <li><span class="label">lab</span><a href="https://biorobotics.ri.cmu.edu/">biorobotics.ri.cmu.edu</a></li>
+        <li><span class="label">paper</span><a href="https://doi.org/10.1109/ARITH64983.2025.00013">doi:10.1109/ARITH64983.2025.00013</a></li>
       </ul>
       <ul class="tags">
+        <li>numerical formats</li>
+        <li>DNN training</li>
+        <li>hardware</li>
+      </ul>
+    </div>
+
+    <h2>Research</h2>
+
+    <div class="entry">
+      <h3>Multi-agent path planning in continuous space</h3>
+      <p class="meta">CMU <a href="https://biorobotics.ri.cmu.edu/">Biorobotics Lab</a> &middot; September 2025 &ndash; present</p>
+      <p>Scalable multi-agent path planning with collision avoidance, for
+      systems where agents visit multiple targets and discretising the space
+      into a grid throws away too much.</p>
+      <p>I implemented SI-RRT* in C++ as the low-level planner, combining safe
+      interval dynamic obstacle avoidance with a constraint table so the
+      planner supports LNS-based replanning. The current work is a metaheuristic
+      for the high-level multi-agent combinatorial path finding search, aiming
+      at lower solution cost and better scaling than the LNS approach it
+      replaces.</p>
+      <ul class="tags">
         <li>C++</li>
-        <li>optimization</li>
-        <li>robotics</li>
+        <li>metaheuristics</li>
+        <li>motion planning</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <h3>IEEE P3109 &mdash; 8-bit binary arithmetic for machine learning</h3>
+      <p class="meta">University of British Columbia &middot; May 2024 &ndash; April 2025</p>
+      <p>Evaluated candidate float8 encodings for the P3109 standard against
+      training stability and hardware cost, and adapted final-layer DNN
+      activation functions to hold accuracy under 8-bit formats.</p>
+      <ul class="tags">
+        <li>standards</li>
+        <li>low precision</li>
+      </ul>
+    </div>
+
+    <h2>Industry</h2>
+
+    <div class="entry">
+      <h3>Model alignment for prior authorization</h3>
+      <p class="meta">Autonomize AI &middot; Machine Learning Engineer Intern &middot; May &ndash; August 2026</p>
+      <p>Built the company's first RL-based alignment pipeline for an AI-driven
+      prior authorization system, raising clinical decision accuracy from 87% to
+      94% over the heuristic baseline it replaced.</p>
+      <p>The alignment objective was Kahneman&ndash;Tversky Optimization: a
+      prospect-theoretic utility function that trains directly on binary
+      accept/reject signals, which removes the dependence on paired preference
+      data that made the alternative approaches impractical here.</p>
+      <ul class="tags">
+        <li>RLHF / KTO</li>
+        <li>PyTorch</li>
+        <li>healthcare</li>
       </ul>
     </div>
 
@@ -80,32 +124,14 @@
 
     <div class="entry">
       <h3><a href="https://cmuaisafety.com/">Carnegie AI Safety Initiative</a></h3>
-      <p class="meta">Fieldbuilding and outreach &middot; [role] &middot; [dates]</p>
-      <!-- EDIT: what did you actually run or build? A reading group, a
-           speaker series, a curriculum, a hackathon? Numbers are persuasive
-           here — how many people went through it. -->
-      <p>[What you run, and roughly how many people it reaches.]</p>
-      <p>[Why fieldbuilding rather than more research — this is a choice worth
-      one sentence of defence.]</p>
+      <p class="meta">Core member</p>
+      <!-- EDIT: the only bracketed item left. Say what you run — a reading
+           group, a speaker series, a curriculum — and roughly how many people
+           it reaches. Numbers are what make fieldbuilding legible. -->
+      <p>[What you run and how many people go through it.]</p>
       <ul class="tags">
         <li>AI safety</li>
         <li>education</li>
-      </ul>
-    </div>
-
-    <h2>Governance</h2>
-
-    <div class="entry">
-      <h3>[Name the specific work]</h3>
-      <p class="meta">[Program, org, or course &middot; dates]</p>
-      <!-- EDIT: "the policy side of AI governance" is too vague to survive on
-           its own page. Name the thing: a memo, a competition, a fellowship,
-           a course paper, a comment you submitted. If it's reading and
-           thinking rather than output, cut this section — an empty heading
-           is worse than three sections. -->
-      <p>[What the work was and what came out of it.]</p>
-      <ul class="tags">
-        <li>AI policy</li>
       </ul>
     </div>
 
@@ -113,14 +139,12 @@
 
     <div class="entry">
       <h3><a href="https://nirvikpande.substack.com/">Substack</a></h3>
-      <p class="meta">Essays on AI, alignment, and adjacent things</p>
-      <!-- EDIT: name two or three posts you'd want a stranger to read, and
-           link them directly. A bare link to a newsletter asks the reader to
-           do the picking, and they won't. -->
+      <!-- EDIT: link two or three specific posts. A bare newsletter link asks
+           the reader to pick, and they won't. -->
       <p>[One line on what you write about there.]</p>
     </div>
 
-    <p class="spaced">Older code, including coursework, is on
+    <p class="spaced">Other code, including coursework, is on
     <a href="https://github.com/nirvik-pande">GitHub</a>.</p>
 
     <ul class="links">
@@ -135,6 +159,6 @@
 
 </main>
 
-<script src="terminal.js?v=11"></script>
+<script src="terminal.js?v=12"></script>
 </body>
 </html>
