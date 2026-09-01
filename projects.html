@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -31,10 +31,6 @@
 
     <h1 class="sub">Projects.</h1>
 
-    <p>The work splits the way the <a href="about.html">about page</a> describes
-    it: some of it is building, some of it is arguing about what is worth
-    building. Both halves are below.</p>
-
     <h2>Research</h2>
 
     <div class="entry">
@@ -47,7 +43,10 @@
       <p>[What problem this addresses, in one sentence a non-specialist can
       follow.]</p>
       <p>[What the method does differently, and what the results showed.]</p>
-      <p class="meta">Paper under submission; code released on acceptance.</p>
+      <ul class="refs">
+        <li><span class="label">paper</span><span class="pending">under submission &mdash; link on acceptance</span></li>
+        <li><span class="label">code</span><a href="https://github.com/nirvik-pande/DARPO">github.com/nirvik-pande/DARPO</a></li>
+      </ul>
       <ul class="tags">
         <li>prompt optimization</li>
         <li>alignment</li>
@@ -64,6 +63,12 @@
       <p>[The specific problem and why exact methods don't work on it.]</p>
       <p>[What you did and what came of it. If it's ongoing, say what you're
       currently trying.]</p>
+      <ul class="refs">
+        <!-- EDIT: add a paper, preprint, poster, or talk when there is one.
+             Delete any line that has nothing behind it. -->
+        <li><span class="label">paper</span><span class="pending">in progress</span></li>
+        <li><span class="label">lab</span><a href="https://biorobotics.ri.cmu.edu/">biorobotics.ri.cmu.edu</a></li>
+      </ul>
       <ul class="tags">
         <li>C++</li>
         <li>optimization</li>
@@ -130,6 +135,6 @@
 
 </main>
 
-<script src="terminal.js?v=10"></script>
+<script src="terminal.js?v=11"></script>
 </body>
 </html>
