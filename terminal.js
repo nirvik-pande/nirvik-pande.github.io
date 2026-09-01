@@ -8,7 +8,7 @@
 
 (function () {
 
-  console.log('terminal.js v10 loaded');
+  console.log('terminal.js v13 loaded');
 
   /* --------------------------------------------------------
      Pages. Add one line here and it appears in ls, cd, and

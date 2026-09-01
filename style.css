@@ -381,6 +381,23 @@ a:hover { text-decoration-color: var(--accent); }
    project entries
    ============================================================ */
 
+/* Section headings inside .essay override the small mono .page h2.
+   Serif, near-black, with a rule under them so they read as real
+   divisions rather than metadata. */
+.essay h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-transform: none;
+  color: var(--ink);
+  margin: 3.5rem 0 0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.essay h2:first-of-type { margin-top: 2rem; }
+
 .entry {
   border-top: 1px solid var(--rule);
   padding: 1.6rem 0;
@@ -405,6 +422,41 @@ a:hover { text-decoration-color: var(--accent); }
 
 .entry p { margin: 0 0 0.75rem; }
 .entry p:last-child { margin-bottom: 0; }
+
+/* When a title is followed straight by prose (no metadata line),
+   the title needs its own breathing room. Entries that do have a
+   .meta line keep the tight 0.2rem above. */
+.entry h3 + p:not(.meta) { margin-top: 0.85rem; }
+
+.entry .refs {
+  list-style: none;
+  padding: 0;
+  margin: 0.85rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.entry .refs li { margin-bottom: 0.3rem; }
+
+.entry .refs .label {
+  color: var(--ink-soft);
+  margin-right: 0.5rem;
+}
+
+.entry .refs a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+.entry .refs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.entry .refs .pending {
+  color: var(--ink-soft);
+  font-style: italic;
+}
 
 .entry .tags {
   display: flex;
